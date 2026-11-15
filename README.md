@@ -26,7 +26,7 @@ app.js       мови, запуск, збереження коду
 
 ## Локально
 
-Відкрити `index.html` у браузері, або:
+Просто двічі клацніть `index.html` — усе працює і з диска. Або запустіть будь-який статичний сервер, наприклад:
 
 ```
 python -m http.server 8000
@@ -41,7 +41,7 @@ python -m http.server 8000
 ## Публікація на GitHub Pages
 
 1. Створити репозиторій `benchkit` на github.com (кнопка **New repository**).
-2. Завантажити в нього чотири файли (кнопка **Add files → Upload files**).
+2. Завантажити в нього файли вище (кнопка **Add files → Upload files**).
 3. **Settings → Pages → Build and deployment → Source: Deploy from a branch**, branch `main`, folder `/ (root)`, **Save**.
 4. Через хвилипу сайт доступний за адресою `https://<ваш-акаунт>.github.io/benchkit/`.
 
