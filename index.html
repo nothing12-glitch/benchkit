@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchkit — пісочниця для коду</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b1220'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='%234ade80' font-family='monospace'>B</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">B</span>
+    <div>
+      <h1>Benchkit</h1>
+      <p class="tagline">Пісочниця для коду прямо в браузері</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="downloadBtn" class="btn ghost" title="Зберегти поточний файл на комп'ютер">Завантажити</button>
+    <button id="resetBtn" class="btn ghost" title="Повернути приклади">Скинути код</button>
+    <button id="aboutBtn" class="btn solid" title="Як це працює">Як це працює?</button>
+  </div>
+</header>
+
+<nav id="langTabs" class="tabs" aria-label="Мови програмування"></nav>
+
+<main class="workspace">
+  <section class="pane editor-pane">
+    <div class="pane-head">
+      <span id="currentLang">JavaScript</span>
+      <span class="hint">Ctrl / ⌘ + Enter — запустити</span>
+    </div>
+    <div id="editor"></div>
+  </section>
+
+  <section class="pane output-pane">
+    <div class="pane-head">
+      <div class="switcher" role="tablist">
+        <button id="tabConsole" class="sw active" role="tab">Консоль</button>
+        <button id="tabPreview" class="sw" role="tab">Попередній перегляд</button>
+      </div>
+      <div class="run-wrap">
+        <span id="status" class="status idle">готово</span>
+        <button id="runBtn" class="btn run">▶ Запустити</button>
+      </div>
+    </div>
+    <pre id="console" class="console"></pre>
+    <iframe id="preview" class="preview hidden" title="Попередній перегляд сторінки" sandbox="allow-scripts allow-modals"></iframe>
+    <iframe id="js-sandbox" class="hidden" title="Ізольоване середовище JavaScript" sandbox="allow-scripts"></iframe>
+  </section>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <button id="modalClose" class="modal-x" aria-label="Закрити">×</button>
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
