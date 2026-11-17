@@ -1,0 +1,347 @@
+/* Переклади Benchkit. Ключ -> текст; відсутній ключ не ламає інтерфейс. */
+
+const STRINGS = {
+  uk: {
+    "app.tagline": "Школа коду просто в браузері",
+    "action.theme": "Тема: автоматично",
+    "action.lang": "EN",
+    "action.signin": "Увійти через GitHub",
+
+    "home.hero.kicker": "Benchkit — школа коду",
+    "home.hero.title": "Пиши код. Одразу бачиш результат.",
+    "home.hero.sub": "Нічого встановлювати не треба. Працює на комп'ютері й на телефоні.",
+    "home.cta.start": "Почати писати код",
+    "home.cta.school": "До школи",
+    "home.cta.browse": "Обрати мову",
+    "home.section.languages": "Обери мову програмування",
+    "home.section.how": "Що всередині",
+    "home.stat.languages": "Мов у списку",
+    "home.stat.runnable": "Запускається зараз",
+
+    "badge.now": "працює зараз",
+    "badge.soon": "незабаром",
+
+    "lang.python": "Python",
+    "lang.python.desc": "Найпростіший старт. Задач і ігор — найбільше.",
+    "lang.javascript": "JavaScript",
+    "lang.javascript.desc": "Мова інтернету. Усе рухається й реагує.",
+    "lang.html": "HTML",
+    "lang.html.desc": "Каркас сторінки: заголовки, кнопки, картинки.",
+    "lang.css": "CSS",
+    "lang.css.desc": "Краса сторінки: кольори, форми, анімації.",
+    "lang.blocks": "Блоками",
+    "lang.blocks.desc": "Складай програму з кубиків, як LEGO.",
+    "lang.cpp": "C++",
+    "lang.cpp.desc": "Дуже швидко й потужно. Складніше на старті.",
+    "lang.java": "Java",
+    "lang.java.desc": "Так роблять великі програми й додатки.",
+    "lang.sql": "SQL",
+    "lang.sql.desc": "Розмовляй з базами даних.",
+    "lang.rust": "Rust",
+    "lang.rust.desc": "Швидко і безпечно: компілятор ловить помилки.",
+    "lang.go": "Go",
+    "lang.go.desc": "Проста мова для серверів і швидких програм.",
+
+    "how.run.title": "Запуск за секунду",
+    "how.run.body": "Натискаєш кнопку — бачиш результат. Помилка не лякає: Біто пояснить її простою мовою.",
+    "how.school.title": "Школа з рівнями",
+    "how.school.body": "Коротке правило, приклад, і одразу спробуй сам. Далі — задача-бос.",
+    "how.points.title": "Бали й сходинки",
+    "how.points.body": "За кожну проходжену задачу капають бали. Рівень видно одразу вгорі.",
+    "how.ai.title": "Підказки ШІ",
+    "how.ai.body": "Застряг? Помічник підкаже напрямок, але не вирішить за тебе.",
+    "how.safe.title": "Безпечно для дітей",
+    "how.safe.body": "Жодного чату з незнайомцями. Коментарі з фільтром і модерациєю.",
+
+    "play.back": "Усі мови",
+    "play.console": "Консоль",
+    "play.preview": "Перегляд",
+    "play.run": "Запустити",
+    "play.download": "Завантажити",
+    "play.reset": "Приклад заново",
+    "play.ready": "готово",
+    "play.running": "виконую…",
+    "play.done": "виконано",
+    "play.stopped": "зупинено",
+    "play.error": "помилка",
+    "play.editorOnly": "лише редактор",
+    "play.projects": "Проєкти",
+    "play.stdin": "Вхідні дані",
+    "play.stdinHint": "Те, що програма прочитає як ніби хтось надрукував на клавіатурі.",
+    "play.compiling": "компілюю…",
+    "play.compilingHint": "Справжній компілятор у хмарі. Перший запуск може тривати хвилину.",
+    "play.stillWaiting": "Ще чекаємо… наступні запуски будуть швидші.",
+    "play.cancel": "Скасувати",
+    "play.cancelled": "Ти скасував запуск.",
+    "play.tooLong": "Довго не відповідає — скасовано. Спробуй ще раз.",
+    "play.crashed": "Програма зупинилась під час роботи.",
+    "play.serverFailed": "Хмарний компілятор не відповів. Перевір інтернет і спробуй ще.",
+    "font.smaller": "Менший шрифт",
+    "font.bigger": "Більший шрифт",
+    "projects.title": "Готові проєкти",
+    "projects.hint": "Вибери проєкт — він відкриється в редакторі. Поточний код заміниться.",
+    "projects.loaded": "Проєкт відкрито й одразу запущено.",
+    "proj.pyGuess": "Гра «вгадай число»",
+    "proj.pyGrades": "Журнал оцінок",
+    "proj.jsTimer": "Підрахунок секунд",
+    "proj.jsWords": "Аналіз речення",
+    "proj.htmlCard": "Візитка з аватаром",
+    "proj.htmlQuiz": "Міні-вікторина",
+    "proj.cssNeon": "Неонова картка",
+    "proj.cssLoader": "Скачучі кульки",
+    "proj.cppSum": "Сума й добуток двох чисел",
+    "proj.javaAvg": "Середнє з вхідних чисел",
+    "proj.rustCount": "Рахуємо слова",
+    "proj.goRev": "Речення навпаки",
+    "err.plain": "Простою мовою:",
+    "err.details": "показати повний текст помилки",
+    "play.editorFailed": "Не вдалося завантажити редактор — потрібен інтернет. Перезавтаж сторінку, коли зʼєднаєшся.",
+    "play.autosaved": "Код збережено в цьому браузері",
+    "play.loopStopped": "Зупинено: код не завершився за 8 секунд. Схоже на нескінченний цикл.",
+    "play.loadingPython": "Завантажую Python (справжній, ~10 МБ). Це одноразово — далі буде швидше.",
+    "play.pythonReady": "Python готовий.",
+    "play.previewOpened": "Сторінку відкрито в «Перегляді».",
+    "play.cssApplied": "Твій CSS застосовано до тестової розмітки в «Перегляді».",
+    "play.resetDone": "Повернув приклад.",
+
+    "school.title": "Школа коду",
+    "school.body": "Коротке правило, приклад, потім ти сам пишеш код і тиснеш «Перевірити». За кожну задачу капають бали, а наприкінці рівня — задача-бос.",
+    "school.pointsUnit": "балів",
+    "school.clearedLabel": "Уроків пройдено",
+    "school.rankUp": "Нове звання:",
+    "school.levelWord": "Рівень",
+    "school.lessonWord": "Урок",
+    "school.bossWord": "Бос",
+    "school.bossHint": "За боса — подвоєні бали.",
+    "school.open": "Відкрити задачу",
+    "school.reopen": "Відкрити знову",
+    "school.taskLabel": "Завдання",
+    "school.check": "Перевірити",
+    "school.insertExample": "Приклад у редактор",
+    "school.back": "До школи",
+    "school.wantPrint": "У консолі має з'явитись",
+    "school.wantCode": "У коді має бути",
+    "school.notYet": "Ще не вийшло. Допиши:",
+    "school.solved": "Урок пройдено!",
+    "school.solvedBadge": "пройдено ✓",
+    "school.repeat": "Цей урок уже пройдено — бали не подвоюються.",
+    "school.almost": "Майже! Погляни на підказку вгорі.",
+    "school.next": "Далі",
+    "school.continue": "Продовжити навчання",
+    "school.start": "Почати перший урок",
+    "school.allDone": "Усі уроки пройдено! 🎉",
+    "school.pointsHint": "Твої бали та звання у школі",
+
+    "footer.made": "Benchkit — щоб навчатися писати код. Твій код не покидає твій пристрій.",
+    "footer.repo": "Код на GitHub",
+
+    "about.title": "Як це працює",
+    "soon.title": "Це з'явиться на наступному етапі",
+    "soon.body": "Ми будуємо Benchkit шматками, щоб усе працювало. Ця фіча вже в плані.",
+    "soon.ok": "Зрозуміло",
+    "soon.openEditor": "Відкрити лише редактор",
+
+    "nav.home": "Головна",
+    "nav.play": "Пісочниця",
+    "nav.school": "Школа",
+    "home.tile.note": "Сірі плитки — це наступні етапи. Натисни, щоб побачити, що з ними буде.",
+    "home.tile.open": "Відкрити",
+
+    "plan.sql": "SQL потрібна справжня база даних на сервері — етап 5, разом з акаунтами.",
+    "plan.blocks": "Програмування блоками — це велика окрема робота, етап 6. Спочатку навчимося на Python.",
+  },
+  en: {
+    "app.tagline": "A code school in your browser",
+    "action.theme": "Theme: auto",
+    "action.lang": "УКР",
+    "action.signin": "Sign in with GitHub",
+
+    "home.hero.kicker": "Benchkit — a code school",
+    "home.hero.title": "Write code. See it run right away.",
+    "home.hero.sub": "Nothing to install. Works on your computer and on your phone.",
+    "home.cta.start": "Start writing code",
+    "home.cta.school": "Go to school",
+    "home.cta.browse": "Pick a language",
+    "home.section.languages": "Pick a programming language",
+    "home.section.how": "What's inside",
+    "home.stat.languages": "Languages listed",
+    "home.stat.runnable": "Runs right now",
+
+    "badge.now": "works now",
+    "badge.soon": "coming soon",
+
+    "lang.python": "Python",
+    "lang.python.desc": "The easiest start. Most tasks and games.",
+    "lang.javascript": "JavaScript",
+    "lang.javascript.desc": "The language of the web. Things move and react.",
+    "lang.html": "HTML",
+    "lang.html.desc": "The skeleton of a page: headings, buttons, images.",
+    "lang.css": "CSS",
+    "lang.css.desc": "The look of a page: colours, shapes, animation.",
+    "lang.blocks": "Blocks",
+    "lang.blocks.desc": "Snap a program together like LEGO.",
+    "lang.cpp": "C++",
+    "lang.cpp.desc": "Very fast and powerful. Harder to start.",
+    "lang.java": "Java",
+    "lang.java.desc": "How big programs and apps get built.",
+    "lang.sql": "SQL",
+    "lang.sql.desc": "Talk to databases.",
+    "lang.rust": "Rust",
+    "lang.rust.desc": "Fast and safe: the compiler catches mistakes.",
+    "lang.go": "Go",
+    "lang.go.desc": "A simple language for servers and fast programs.",
+
+    "how.run.title": "Runs in a second",
+    "how.run.body": "Press a button, see the result. Errors don't scare: Bito explains them in plain words.",
+    "how.school.title": "A school with levels",
+    "how.school.body": "A short rule, an example, then you try it. A boss task comes next.",
+    "how.points.title": "Points and ranks",
+    "how.points.body": "Every solved task gives points. Your level shows right at the top.",
+    "how.ai.title": "AI hints",
+    "how.ai.body": "Stuck? The assistant points you somewhere, but won't solve it for you.",
+    "how.safe.title": "Safe for kids",
+    "how.safe.body": "No chats with strangers. Comments are filtered and moderated.",
+
+    "play.back": "All languages",
+    "play.console": "Console",
+    "play.preview": "Preview",
+    "play.run": "Run",
+    "play.download": "Download",
+    "play.reset": "Reset example",
+    "play.ready": "ready",
+    "play.running": "running…",
+    "play.done": "done",
+    "play.stopped": "stopped",
+    "play.error": "error",
+    "play.editorOnly": "editor only",
+    "play.projects": "Projects",
+    "play.stdin": "Input data",
+    "play.stdinHint": "What the program reads as if someone typed it on the keyboard.",
+    "play.compiling": "compiling…",
+    "play.compilingHint": "A real compiler in the cloud. The first run can take a minute.",
+    "play.stillWaiting": "Still waiting… the next runs are faster.",
+    "play.cancel": "Cancel",
+    "play.cancelled": "You cancelled the run.",
+    "play.tooLong": "It took too long — cancelled. Try again.",
+    "play.crashed": "The program stopped while running.",
+    "play.serverFailed": "The cloud compiler did not answer. Check internet and try again.",
+    "font.smaller": "Smaller text",
+    "font.bigger": "Bigger text",
+    "projects.title": "Ready-made projects",
+    "projects.hint": "Pick a project and it opens in the editor. Your current code is replaced.",
+    "projects.loaded": "Project opened and run for you.",
+    "proj.pyGuess": "Guess the number",
+    "proj.pyGrades": "Grade book",
+    "proj.jsTimer": "Counting seconds",
+    "proj.jsWords": "Sentence analyser",
+    "proj.htmlCard": "Profile card",
+    "proj.htmlQuiz": "Mini quiz",
+    "proj.cssNeon": "Neon card",
+    "proj.cssLoader": "Bouncing dots",
+    "proj.cppSum": "Sum and product of two numbers",
+    "proj.javaAvg": "Average of the input numbers",
+    "proj.rustCount": "Counting words",
+    "proj.goRev": "Sentence backwards",
+    "err.plain": "In plain words:",
+    "err.details": "show the full error text",
+    "play.editorFailed": "Could not load the editor — internet is needed. Reload the page once you are online.",
+    "play.autosaved": "Your code is saved in this browser",
+    "play.loopStopped": "Stopped: the code did not finish within 8 seconds. Looks like an endless loop.",
+    "play.loadingPython": "Loading Python (the real one, ~10 MB). One time only — after this it is fast.",
+    "play.pythonReady": "Python is ready.",
+    "play.previewOpened": "The page is open in Preview.",
+    "play.cssApplied": "Your CSS was applied to the test markup in Preview.",
+    "play.resetDone": "Example restored.",
+
+    "school.title": "Code school",
+    "school.body": "A short rule, an example, then you write the code and press Check. Every task gives points, and each level ends with a boss task.",
+    "school.pointsUnit": "points",
+    "school.clearedLabel": "Tasks solved",
+    "school.rankUp": "New rank:",
+    "school.levelWord": "Level",
+    "school.lessonWord": "Lesson",
+    "school.bossWord": "Boss",
+    "school.bossHint": "A boss task pays double.",
+    "school.open": "Open the task",
+    "school.reopen": "Open again",
+    "school.taskLabel": "Your task",
+    "school.check": "Check",
+    "school.insertExample": "Put the example in the editor",
+    "school.back": "Back to school",
+    "school.wantPrint": "The console should show",
+    "school.wantCode": "Your code should contain",
+    "school.notYet": "Not yet. Finish this:",
+    "school.solved": "Task solved!",
+    "school.solvedBadge": "solved ✓",
+    "school.repeat": "You already solved this one — points don't stack.",
+    "school.almost": "Almost! Look at the hint above.",
+    "school.next": "Next",
+    "school.continue": "Continue the course",
+    "school.start": "Start the first lesson",
+    "school.allDone": "Every task is solved! 🎉",
+    "school.pointsHint": "Your school points and rank",
+
+    "footer.made": "Benchkit — to learn writing code. Your code never leaves your device.",
+    "footer.repo": "Code on GitHub",
+
+    "about.title": "How this works",
+    "soon.title": "This arrives in the next stage",
+    "soon.body": "We build Benchkit in pieces so everything keeps working. This feature is on the plan.",
+    "soon.ok": "Got it",
+    "soon.openEditor": "Open the editor only",
+
+    "nav.home": "Home",
+    "nav.play": "Playground",
+    "nav.school": "School",
+    "home.tile.note": "Grey tiles are later stages. Tap one to see what is planned.",
+    "home.tile.open": "Open",
+
+    "plan.sql": "SQL needs a real database on a server — stage 5, together with accounts.",
+    "plan.blocks": "Block coding is a big separate job — stage 6. First we learn with Python.",
+  },
+};
+
+let locale = localStorage.getItem("benchkit:v2:locale") || "uk";
+let themeMode = localStorage.getItem("benchkit:v2:theme") || "auto";
+
+function t(key) {
+  return (STRINGS[locale] && STRINGS[locale][key]) || STRINGS.uk[key] || key;
+}
+
+function applyTheme() {
+  if (themeMode === "auto") {
+    document.documentElement.removeAttribute("data-theme");
+  } else {
+    document.documentElement.setAttribute("data-theme", themeMode);
+  }
+}
+
+function isDarkNow() {
+  if (themeMode !== "auto") return themeMode === "dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function applyI18n(scope) {
+  (scope || document).querySelectorAll("[data-i18n]").forEach((node) => {
+    node.textContent = t(node.dataset.i18n);
+  });
+  (scope || document).querySelectorAll("[data-i18n-title]").forEach((node) => {
+    node.title = t(node.dataset.i18nTitle);
+  });
+  (scope || document).querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+    node.placeholder = t(node.dataset.i18nPlaceholder);
+  });
+  document.documentElement.lang = locale;
+}
+
+function nextThemeLabel() {
+  const order = { auto: "light", light: "dark", dark: "auto" };
+  const icons = { auto: "🌓", light: "☀️", dark: "🌙" };
+  const names = { auto: "Тема: авто", light: "Тема: світла", dark: "Тема: темна" };
+  const en = { auto: "Theme: auto", light: "Theme: light", dark: "Theme: dark" };
+  return {
+    next: order[themeMode],
+    icon: icons[themeMode],
+    label: locale === "uk" ? names[themeMode] : en[themeMode],
+  };
+}

@@ -3,63 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Benchkit — пісочниця для коду</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b1220'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='%234ade80' font-family='monospace'>B</text></svg>">
+<title>Benchkit — школа коду в браузері</title>
+<meta name="description" content="Benchkit: вчися писати код на Python, JavaScript, HTML і CSS. Запуск прямо в браузері, на комп'ютері й телефоні.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%23006b5c'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='%2377f8dd' font-family='monospace'>B</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">
-    <span class="logo">B</span>
-    <div>
-      <h1>Benchkit</h1>
-      <p class="tagline">Пісочниця для коду прямо в браузері</p>
-    </div>
-  </div>
-  <div class="top-actions">
-    <button id="downloadBtn" class="btn ghost" title="Зберегти поточний файл на комп'ютер">Завантажити</button>
-    <button id="resetBtn" class="btn ghost" title="Повернути приклади">Скинути код</button>
-    <button id="aboutBtn" class="btn solid" title="Як це працює">Як це працює?</button>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="bito" viewBox="0 0 120 128">
+    <line x1="60" y1="16" x2="60" y2="30" stroke="var(--md-primary)" stroke-width="5" stroke-linecap="round">
+      <animateTransform attributeName="transform" type="rotate" values="-6 60 30; 6 60 30; -6 60 30" dur="3.4s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="60" cy="12" r="7" fill="var(--md-tertiary-container)">
+      <animate attributeName="r" values="7;8.4;7" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+    <rect x="26" y="30" width="68" height="54" rx="22" fill="var(--md-primary-container)"/>
+    <rect x="36" y="42" width="48" height="30" rx="14" fill="var(--md-on-primary-container)"/>
+    <circle cx="50" cy="57" r="5.5" fill="var(--md-primary-container)">
+      <animate attributeName="ry" values="5.5;0.8;5.5" dur="4.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="70" cy="57" r="5.5" fill="var(--md-primary-container)">
+      <animate attributeName="ry" values="5.5;0.8;5.5" dur="4.2s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M52 66q8 6 16 0" stroke="var(--md-primary-container)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <rect x="40" y="86" width="40" height="30" rx="14" fill="var(--md-primary)"/>
+    <text x="60" y="106" text-anchor="middle" font-size="15" font-family="monospace" fill="var(--md-on-primary)">&lt;/&gt;</text>
+    <rect x="20" y="88" width="14" height="9" rx="4.5" fill="var(--md-secondary-container)"/>
+    <rect x="86" y="88" width="14" height="9" rx="4.5" fill="var(--md-secondary-container)"/>
+    <circle cx="50" cy="120" r="6" fill="var(--md-on-surface-variant)"/>
+    <circle cx="70" cy="120" r="6" fill="var(--md-on-surface-variant)"/>
+  </symbol>
+</svg>
+
+<header class="app-bar">
+  <a class="brand" href="#/">
+    <svg class="brand-mark" aria-hidden="true"><use href="#bito"></use></svg>
+    <span class="brand-text">
+      <b>Benchkit</b>
+      <small data-i18n="app.tagline"></small>
+    </span>
+  </a>
+  <div class="app-bar-actions">
+    <a class="chip score" id="scoreChip" href="#/school" title=""></a>
+    <button id="themeBtn" class="icon-btn" type="button"></button>
+    <button id="langBtn" class="btn text sm" type="button" data-i18n="action.lang"></button>
+    <button id="signinBtn" class="btn tonal sm" type="button" data-i18n-title="action.signin">🐙&nbsp;<span class="signin-label" data-i18n="action.signin"></span></button>
   </div>
 </header>
 
-<nav id="langTabs" class="tabs" aria-label="Мови програмування"></nav>
+<div class="shell">
+  <nav class="side-nav" id="sideNav" aria-label="Benchkit">
+    <a href="#/" data-nav="home"><span class="nav-ico">🏠</span><span data-i18n="nav.home"></span></a>
+    <a href="#/play/python" data-nav="play"><span class="nav-ico">⌨️</span><span data-i18n="nav.play"></span></a>
+    <a href="#/school" data-nav="school"><span class="nav-ico">🎓</span><span data-i18n="nav.school"></span></a>
+  </nav>
 
-<main class="workspace">
-  <section class="pane editor-pane">
-    <div class="pane-head">
-      <span id="currentLang">JavaScript</span>
-      <span class="hint">Ctrl / ⌘ + Enter — запустити</span>
-    </div>
-    <div id="editor"></div>
-  </section>
+  <main id="view" tabindex="-1"></main>
+</div>
 
-  <section class="pane output-pane">
-    <div class="pane-head">
-      <div class="switcher" role="tablist">
-        <button id="tabConsole" class="sw active" role="tab">Консоль</button>
-        <button id="tabPreview" class="sw" role="tab">Попередній перегляд</button>
+<nav class="bottom-bar" id="bottomBar" aria-label="Benchkit">
+  <a href="#/" data-nav="home"><span class="nav-ico">🏠</span><span data-i18n="nav.home"></span></a>
+  <a href="#/play/python" data-nav="play"><span class="nav-ico">⌨️</span><span data-i18n="nav.play"></span></a>
+  <a href="#/school" data-nav="school"><span class="nav-ico">🎓</span><span data-i18n="nav.school"></span></a>
+</nav>
+
+<template id="tpl-home">
+  <section>
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="kicker">🤖 <span data-i18n="home.hero.kicker"></span></span>
+          <h1 class="display" data-i18n="home.hero.title"></h1>
+          <p class="body" data-i18n="home.hero.sub"></p>
+          <div class="hero-cta">
+            <a class="btn big" href="#/play/python">▶ <span data-i18n="home.cta.start"></span></a>
+            <a class="btn outlined big" href="#/school">🎓 <span data-i18n="home.cta.school"></span></a>
+            <a class="btn text big" href="#languages" data-i18n="home.cta.browse"></a>
+          </div>
+          <div class="stats">
+            <div class="stat"><b id="statLangs">10</b><span class="caption" data-i18n="home.stat.languages"></span></div>
+            <div class="stat"><b id="statRun">4</b><span class="caption" data-i18n="home.stat.runnable"></span></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <svg viewBox="0 0 120 128" role="img" aria-label="Bito"><use href="#bito"></use></svg>
+        </div>
       </div>
-      <div class="run-wrap">
-        <span id="status" class="status idle">готово</span>
-        <button id="runBtn" class="btn run">▶ Запустити</button>
+    </div>
+
+    <div class="section" id="languages">
+      <h2 class="headline" data-i18n="home.section.languages"></h2>
+      <p class="caption" data-i18n="home.tile.note"></p>
+      <div class="tiles" id="tiles"></div>
+    </div>
+
+    <div class="section">
+      <h2 class="headline" data-i18n="home.section.how"></h2>
+      <div class="how">
+        <div class="how-card p"><h3 class="title" data-i18n="how.run.title"></h3><p data-i18n="how.run.body"></p></div>
+        <div class="how-card s"><h3 class="title" data-i18n="how.school.title"></h3><p data-i18n="how.school.body"></p></div>
+        <div class="how-card q"><h3 class="title" data-i18n="how.points.title"></h3><p data-i18n="how.points.body"></p></div>
+        <div class="how-card t"><h3 class="title" data-i18n="how.ai.title"></h3><p data-i18n="how.ai.body"></p></div>
       </div>
     </div>
-    <pre id="console" class="console"></pre>
-    <iframe id="preview" class="preview hidden" title="Попередній перегляд сторінки" sandbox="allow-scripts allow-modals"></iframe>
-    <iframe id="js-sandbox" class="hidden" title="Ізольоване середовище JavaScript" sandbox="allow-scripts"></iframe>
-  </section>
-</main>
 
-<div id="modal" class="modal hidden">
-  <div class="modal-card">
-    <button id="modalClose" class="modal-x" aria-label="Закрити">×</button>
+    <footer class="site">
+      <span data-i18n="footer.made"></span>
+      <a href="https://github.com/nothing12-glitch/benchkit" rel="noopener" data-i18n="footer.repo"></a>
+    </footer>
+  </section>
+</template>
+
+<template id="tpl-play">
+  <section class="play">
+    <div class="play-bar">
+      <a class="btn text sm" href="#/" data-i18n-title="play.back">‹ <span class="back-label" data-i18n="play.back"></span></a>
+      <h1 class="title" id="playTitle">Python</h1>
+      <span class="chip" id="playChip"></span>
+      <details id="stdinBox" class="stdin-box hidden">
+        <summary>⌨️ <span data-i18n="play.stdin"></span></summary>
+        <textarea id="stdinInput" rows="3" spellcheck="false" autocomplete="off" data-i18n-placeholder="play.stdinHint"></textarea>
+      </details>
+      <span class="bar-actions">
+        <button class="btn text sm" id="projectsBtn" type="button" data-i18n="play.projects"></button>
+        <button class="btn text sm" id="resetBtn" type="button" data-i18n="play.reset"></button>
+        <button class="btn text sm" id="downloadBtn" type="button" data-i18n="play.download"></button>
+        <button class="btn outlined sm hidden" id="cancelBtn" type="button">✕ <span data-i18n="play.cancel"></span></button>
+        <button class="btn desktop-run" id="runBtnTop" type="button">▶ <span data-i18n="play.run"></span></button>
+      </span>
+    </div>
+
+    <div class="play-split">
+      <div class="pane">
+        <div id="editor"></div>
+      </div>
+
+      <div class="pane">
+        <div class="pane-head">
+          <div class="tabs-pill">
+            <button id="tabConsole" class="active" type="button" data-i18n="play.console"></button>
+            <button id="tabPreview" type="button" data-i18n="play.preview"></button>
+          </div>
+          <span class="spacer"></span>
+          <span class="status" id="status"></span>
+        </div>
+        <pre id="console" class="console"></pre>
+        <iframe id="preview" class="preview hidden" title="Preview" sandbox="allow-scripts allow-modals"></iframe>
+      </div>
+    </div>
+
+    <div class="play-foot">
+      <button class="fab" id="runBtn" type="button">▶ <span data-i18n="play.run"></span></button>
+      <span class="font-tools">
+        <button class="icon-btn" id="fontDown" type="button" data-i18n-title="font.smaller">A−</button>
+        <button class="icon-btn" id="fontUp" type="button" data-i18n-title="font.bigger">A+</button>
+      </span>
+      <span class="spacer" style="flex:1"></span>
+      <span class="caption" id="saveNote" data-i18n="play.autosaved"></span>
+    </div>
+
+    <iframe id="js-sandbox" class="hidden" title="JavaScript sandbox" sandbox="allow-scripts"></iframe>
+  </section>
+</template>
+
+<template id="tpl-school">
+  <section class="school"></section>
+</template>
+
+<div id="modal" class="scrim hidden">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <h2 id="modalTitle"></h2>
     <div id="modalBody"></div>
+    <div class="dialog-actions"><button class="btn" id="modalOk" type="button" data-i18n="soon.ok"></button></div>
   </div>
 </div>
 
+<div class="snackbar" id="snack" role="status" aria-live="polite"></div>
+
+<script src="i18n.js"></script>
+<script src="explain.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
+<script src="school.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

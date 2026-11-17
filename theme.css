@@ -1,0 +1,122 @@
+/* Material 3 Expressive — дизайн-токени Benchkit.
+   Палітра будується навколо м'ятного: кожна роль це light-dark(світле, темне),
+   тому перемикач теми = одна властивість color-scheme. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Тональна палітра: 40 = для світлої теми, 80 = для темної. */
+  --mint-10: #00201b;
+  --mint-20: #003830;
+  --mint-30: #005044;
+  --mint-40: #006b5c;
+  --mint-80: #54dbc2;
+  --mint-90: #77f8dd;
+  --mint-95: #b8fff0;
+
+  --coral-30: #7a2f4a;
+  --coral-40: #a7495b;
+  --coral-80: #ffb3c1;
+  --coral-90: #ffd9e0;
+
+  --sky-30: #2f4d70;
+  --sky-40: #3f648f;
+  --sky-80: #a9ccef;
+  --sky-90: #d1e4fa;
+
+  --lime-40: #5d5f2f;
+  --lime-80: #d3d59a;
+  --lime-90: #efeec3;
+
+  --neutral-4: #0a0f0e;
+  --neutral-6: #0f1413;
+  --neutral-10: #171d1a;
+  --neutral-12: #1b211e;
+  --neutral-17: #262c29;
+  --neutral-22: #313734;
+  --neutral-60: #717976;
+  --neutral-80: #c1c9c5;
+  --neutral-90: #dee3e0;
+  --neutral-94: #e4e9e6;
+  --neutral-96: #eaeefc;
+  --neutral-98: #f5faf7;
+  --white: #ffffff;
+
+  --red-30: #8c1d18;
+  --red-40: #b3261e;
+  --red-80: #f2b8b5;
+  --red-90: #f9dedc;
+
+  /* Ролейові кольори M3 */
+  --md-primary: light-dark(var(--mint-40), var(--mint-80));
+  --md-on-primary: light-dark(var(--white), var(--mint-20));
+  --md-primary-container: light-dark(var(--mint-90), var(--mint-30));
+  --md-on-primary-container: light-dark(var(--mint-10), var(--mint-90));
+
+  --md-secondary-container: light-dark(var(--sky-90), var(--sky-30));
+  --md-on-secondary-container: light-dark(var(--sky-30), var(--sky-90));
+
+  --md-tertiary-container: light-dark(var(--coral-90), var(--coral-30));
+  --md-on-tertiary-container: light-dark(var(--coral-30), var(--coral-90));
+
+  --md-quaternary-container: light-dark(var(--lime-90), var(--lime-40));
+  --md-on-quaternary-container: light-dark(var(--lime-40), var(--lime-90));
+
+  --md-error: light-dark(var(--red-40), var(--red-80));
+  --md-error-container: light-dark(var(--red-90), var(--red-30));
+  --md-on-error-container: light-dark(var(--red-30), var(--red-90));
+
+  --md-surface: light-dark(var(--neutral-98), var(--neutral-6));
+  --md-surface-dim: light-dark(var(--neutral-96), var(--neutral-4));
+  --md-surface-bright: light-dark(var(--white), var(--neutral-22));
+  --md-surface-lowest: light-dark(var(--white), var(--neutral-4));
+  --md-surface-low: light-dark(var(--neutral-98), var(--neutral-10));
+  --md-surface-container: light-dark(#eff5f2, var(--neutral-12));
+  --md-surface-high: light-dark(var(--neutral-94), var(--neutral-17));
+  --md-surface-highest: light-dark(var(--neutral-90), var(--neutral-22));
+
+  --md-on-surface: light-dark(var(--neutral-10), var(--neutral-90));
+  --md-on-surface-variant: light-dark(#414845, var(--neutral-80));
+  --md-outline: light-dark(var(--neutral-60), #8b938f);
+  --md-outline-variant: light-dark(#c1c9c5, #414845);
+
+  --md-inverse-surface: light-dark(var(--neutral-17), var(--neutral-90));
+  --md-inverse-on-surface: light-dark(var(--neutral-94), var(--neutral-10));
+  --md-inverse-primary: light-dark(var(--mint-80), var(--mint-40));
+
+  /* Форма (shape scale) */
+  --shape-xs: 4px;
+  --shape-sm: 8px;
+  --shape-md: 12px;
+  --shape-lg: 16px;
+  --shape-xl: 28px;
+  --shape-2xl: 32px;
+  --shape-pill: 999px;
+
+  /* Тіні (elevation) */
+  --elev-1: 0 1px 2px rgba(0, 32, 27, .20), 0 1px 3px 1px rgba(0, 32, 27, .10);
+  --elev-2: 0 1px 2px rgba(0, 32, 27, .22), 0 2px 6px 2px rgba(0, 32, 27, .12);
+  --elev-3: 0 4px 8px 3px rgba(0, 32, 27, .14), 0 1px 3px rgba(0, 32, 27, .24);
+
+  /* Рух (motion) */
+  --ease-emphasized: cubic-bezier(.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(.5, 1.75, .75, 1);
+  --ease-out: cubic-bezier(0, 0, .2, 1);
+  --dur-short: 150ms;
+  --dur-medium: 300ms;
+  --dur-long: 500ms;
+
+  /* Типографіка */
+  --font-ui: Roboto, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-code: "Roboto Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+/* Ручний вибір теми: light-dark() слухається саме color-scheme. */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+/* Стан «всієї сторінки» для доступності: фокус видимий завжди. */
+:focus-visible {
+  outline: 3px solid var(--md-primary);
+  outline-offset: 2px;
+}
